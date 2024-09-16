@@ -5,12 +5,18 @@ import org.example.model.CryptoModel;
 public class  CryptoService {
 
 
-        public void crypt (CryptoModel cryptoModel){
+        public void cryptText(CryptoModel cryptoModel){
+
                 cryptoModel.setKey(cryptoModel.getKey() +1);
         }
 
-        public void deCryptText(CryptoModel cryptoModel) {
+        public CryptoModel deCryptText(CryptoModel cryptoModel) {
                 cryptoModel.setKey(cryptoModel.getKey() -1);
+                return cryptoModel;
+        }
+
+        public void bruteForce (){
+
         }
         //  public String encrypt (CryptoModel cryptoModel) {
 

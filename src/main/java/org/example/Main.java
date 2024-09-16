@@ -1,13 +1,14 @@
 package org.example;
 
+import org.example.model.HackModel;
 import org.example.model.CryptoModel;
+import org.example.service.BruteForceService;
 import org.example.service.ConsoleService;
 import org.example.service.CryptoService;
 
 import java.util.Scanner;
 
-import static org.example.constants.Constants.ENTER_FILENAME_DECRYPTION;
-import static org.example.constants.Constants.ENTER_FILE_NAME_ENCRYPTION;
+import static org.example.constants.Constants.*;
 
 
 public class Main {
@@ -19,22 +20,34 @@ public class Main {
         CryptoModel cryptoModel = new CryptoModel();
         Scanner scanner = new Scanner(System.in);
         ConsoleService consoleService = new ConsoleService(scanner);
-        Integer value = 2;
+        HackModel hackModel = new HackModel();
+        BruteForceService bruteForceService = new BruteForceService();
+        Integer value = 3;
         switch (value) {
-            // шифровка
+            // cryptText
             case 1:
-                cryptoModel = consoleService.enterData(ENTER_FILE_NAME_ENCRYPTION);
-                cryptoService.crypt(cryptoModel);
+                cryptoModel = consoleService.enterCryptoData(ENTER_FILE_NAME_ENCRYPTION);
+                cryptoService.cryptText(cryptoModel);
                 break;
             case 2:
-                //расшифровка
-                cryptoModel = consoleService.enterData(ENTER_FILENAME_DECRYPTION);
-                cryptoService.deCryptText(cryptoModel);
+                //deCryptText
+                cryptoService.deCryptText(consoleService.enterCryptoData(ENTER_FILENAME_DECRYPTION));// TODO vernyt kak case 1 и разобраться почему не работает
 
                 break;
-        }
-        System.out.printf(cryptoModel.getFileSourcePath() + " " + cryptoModel.getFileSavePath() + " " + cryptoModel.getKey());
+            case 3:
+                // brute force decrypt
+                hackModel = consoleService.enterBruteData();
+                bruteForceService.hackBruteForce(hackModel);
 
+                break;
+                case 4:
+                    // statistical analysis decrypt
+
+
+            }
+
+        System.out.println(cryptoModel.getFileSourcePath() + " " + cryptoModel.getFileSavePath() + " " + cryptoModel.getKey());
+        System.out.println(hackModel.getEncryptedFileNamePath() + " " + hackModel.getExampleFileNamePath() + " " + hackModel.getHackResultFileNamePath());
 
     }
 

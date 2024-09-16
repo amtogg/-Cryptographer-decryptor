@@ -9,5 +9,6 @@ public class Constants {
     public static final String ENTER_FILE_NAME_ENCRYPTED = "Необходимо указать адрес зашифрованного файла";
     public static final String ENTER_FILE_NAME_EXAMPLE = "Необходимо указать адрес файла с примером";
     public static final String ENTER_FILE_NAME_HACK_RESULT = "Необходимо указать адрес файла с результатом взлома";
-
+    public static final String fileSuccessfullyEncryptedBruteForce = "файл успешно расшифрован с помощью взлома с помощью метода брутфорс";
+    public static final String fileSuccessfullyEncryptedStatisticAnalus = "файл успешно расшифрован с помощью взлома c помощью метода статистического анализа";
 }
